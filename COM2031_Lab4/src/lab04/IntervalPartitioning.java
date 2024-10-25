@@ -1,4 +1,4 @@
-package lab04;
+package COM2031_Lab4.src.lab04;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,17 +6,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 public class IntervalPartitioning {
 
 	static class Interval {
-
-		// * start time of interval
 		final int start;
-		// * end time of interval
 		final int finish;
-		// * convenient name for the interval.
 		final String name;
 
 		Interval(String name, int start, int finish) {
@@ -25,95 +20,55 @@ public class IntervalPartitioning {
 			this.name = name;
 		}
 
-		/**
-		 * convenience method to print an Interval
-		 */
-
 		@Override
 		public String toString() {
 			return "Interval [start=" + start + ", finish=" + finish + ", name=" + name + "]";
 		}
 	}
 
-	/*
-	 * Checks whether a room containing a list of Intervals is compatible with a new
-	 * interval
-	 * 
-	 * @param room the list of intervals already scheduled in the room
-	 * 
-	 * @param i the new interval to be checked - is there space in room for this
-	 * interval
-	 * 
-	 * @return boolean indicating whether i can be added to the room without
-	 * overlapping any intervals
-	 */
-
 	static boolean isCompatible(List<Interval> room, Interval i) {
-		boolean clear = true;
 		for (Interval j : room) {
 			if (overlaps(j, i)) {
-				clear = false;
-				break;
+				return false; // Return false immediately if there's an overlap
 			}
 		}
-		return clear;
+		return true; // No overlaps found
 	}
 
-	/*
-	 * returns true if the two intervals overlap, and returns false otherwise
-	 */
-
 	static boolean overlaps(Interval i, Interval j) {
-		// TODO: return true if i and j overlap, otherwise return false
-		return true; // TODO: replace this with the correct code.
+		return (i.start < j.finish && j.start < i.finish); // Check for overlap
 	}
 
 	static List<List<Interval>> partition(Interval[] intervals) {
-
-		// sort intervals in order of ascending start time.
+		// Sort intervals in order of ascending start time.
 		Arrays.sort(intervals, new Comparator<Interval>() {
 			@Override
 			public int compare(Interval first, Interval second) {
-				return 0; // TODO: replace this with the correct code for compare;
+				return Integer.compare(first.start, second.start); // Compare by start time
 			}
 		});
 
-		// list of class rooms and the intervals that are scheduled in them.
-		List<List<Interval>> classrooms = new LinkedList<List<Interval>>();
+		// List of class rooms and the intervals that are scheduled in them.
+		List<List<Interval>> classrooms = new LinkedList<>();
 
 		for (Interval i : intervals) {
 			boolean found = false;
 			for (List<Interval> r : classrooms) {
-
 				if (isCompatible(r, i)) {
 					r.add(i);
 					found = true;
-					break;
+					break; // Interval added to an existing room
 				}
 			}
-			if (found == false) {
-				List<Interval> newRoom = new LinkedList<Interval>();
+			if (!found) {
+				List<Interval> newRoom = new LinkedList<>();
 				newRoom.add(i);
-				classrooms.add(newRoom);
+				classrooms.add(newRoom); // New room for the interval
 			}
 		}
 
 		return classrooms;
-
 	}
-
-	// *********************************************************
-
-	/**
-	 * test the partitioning algorithm on a set of intervals
-	 * 
-	 * @param name
-	 *                 name of the test
-	 * @param test
-	 *                 the set of intervals to test
-	 * @param expected
-	 *                 the expected number of rooms required for the schedule
-	 */
 
 	public static void testPartition(String name, Interval[] test, int expected) {
 		List<List<Interval>> schedule = IntervalPartitioning.partition(test);
@@ -139,17 +94,10 @@ public class IntervalPartitioning {
 				System.out.print("\n");
 			}
 			System.out.println("*********************\n");
-
 		}
-
 	}
 
-	/*
-	 * Main will test the scheduling algorithm on various inputs
-	 */
-
 	public static void main(String[] args) {
-
 		Interval a = new Interval("a", 10, 30);
 		Interval b = new Interval("b", 15, 35);
 		Interval c = new Interval("c", 20, 50);
@@ -185,6 +133,5 @@ public class IntervalPartitioning {
 		testPartition("test7", intervals7, 2);
 		Interval[] intervals8 = { d, g, m, q, r };
 		testPartition("test8", intervals8, 3);
-
 	}
 }

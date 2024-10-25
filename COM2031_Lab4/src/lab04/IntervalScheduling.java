@@ -1,4 +1,4 @@
-package lab04;
+package COM2031_Lab4.src.lab04;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -65,42 +65,33 @@ public class IntervalScheduling {
 	 */
 
 	static Interval[] schedule(Interval[] intervals) {
-
-		// sort by increasing finish time
-		// implement compare so that items are ordered in the way
-		// they need to be considered by the greedy algorithm.
+		// Sort intervals by finish time
 		Arrays.sort(intervals, new Comparator<Interval>() {
 			@Override
 			public int compare(Interval first, Interval second) {
 				return first.finish - second.finish;
-				// TODO should be negative if the first interval
-				// should come before the second interval,
-				// positive if the first should come after, and
-				// 0 if they are equivalent in the ordering;
 			}
 		});
 
-		// greedily pick the first compatible interval
-		//
-		// TODO initialisation of the greedy pass through the intervals
-		// what variables do you need?
-		// you'll need to track the number of intervals scheduled so far
-		// and track the latest finish time of the intervals scheduled so far
-		//
+		// Initialize variables for greedy scheduling
 		Interval[] schedule = new Interval[intervals.length];
+		int countSelected = 0;
+		int lastFinishTime = 0;
+
+		// Greedily select intervals that do not overlap
 		for (Interval i : intervals) {
-			// TODO check the intervals in turn and add them
-			// to the schedule if they can be added
+			if (i.start >= lastFinishTime) {
+				schedule[countSelected] = i;
+				lastFinishTime = i.finish;
+				countSelected++;
+			}
 		}
-		//
-		// counter is the number of intervals that were scheduled
-		// this code produces an array of exactly the right length to return
-		//
-		Interval[] ans = new Interval[counter];
+
+		// Return only the scheduled intervals
+		Interval[] ans = new Interval[countSelected];
 		for (int i = 0; i < countSelected; i++) {
 			ans[i] = schedule[i];
 		}
-
 		return ans;
 	}
 
