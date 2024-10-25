@@ -1,11 +1,11 @@
-package divideconquer;
+package COM2031_Lab1.src.dnc;
 
 /**
  * Maximum value in an array, using Divide and Conquer
  * 
  * COM2031: Divide and Conquer Labs
  * Autumn Semester 2020
- * Steve Schneider
+ * 
  */
 
 public class Maximum {

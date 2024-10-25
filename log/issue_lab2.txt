@@ -1,0 +1,35 @@
+IndexOutOfBoundsException:
+Error:
+Exception in thread "main" java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0
+Cause: Tried to access an invalid index in an empty array.
+Solution:
+Added checks to ensure the calculated index for the right array is valid. If it's negative or the right array is empty, an IllegalArgumentException is thrown. This prevents accessing invalid indices.
+
+Handling of Empty or Invalid Inputs:
+Challenge:
+The program could crash if S was empty or if k was out of bounds.
+Solution:
+In FindKPair, included checks for empty arrays and invalid k values. This way, I can catch issues early and provide a clear error message.
+
+Understanding the Logic of Divide-and-Conquer:
+Challenge:
+Needed to properly implement the divide-and-conquer strategy to efficiently find the k-th and (k+1)-th smallest elements.
+Solution:
+Carefully structured the recursive calls and ensured the correct subarrays were processed. Added debug statements to track the array state, pivot, and sizes of partitions, which helped clarify the flow.
+
+Calculating the Median:
+Challenge:
+Needed to accurately compute the median for both odd and even-sized arrays.
+Solution:
+In the findMedian method, differentiated between odd and even cases. Used FindKPair to retrieve the correct elements for median calculation, ensuring accuracy.
+
+Debugging Output:
+Issue:
+Initial debug output was not detailed enough to track the program's flow effectively.
+Solution:
+Added more debug statements in the dac_FindKPair method to print array contents, pivot values, and partition sizes. This enhanced my understanding of the execution process and helped pinpoint issues.
+
+Key Takeaways:
+Input validation is crucial to prevent runtime errors.
+Enhanced debugging output can significantly aid in troubleshooting.
+A solid understanding of the algorithm's logic is essential for successful implementation.

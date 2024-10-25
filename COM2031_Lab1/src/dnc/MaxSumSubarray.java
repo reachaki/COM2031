@@ -1,10 +1,11 @@
-package divideconquer;
+package COM2031_Lab1.src.dnc;
+
 /**
  * Maximum Sum Subarray of a 1-dimensional array
  * 
  * COM2031: Divide and Conquer Labs
  * Autumn Semester 2020
- * Steve Schneider
+ * 
  */
 
 public class MaxSumSubarray {
