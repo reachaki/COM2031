@@ -1,4 +1,4 @@
-package DivideConquer;
+package divideconquer;
 
 /**
  * Sum the values in an ArrayList uswing Divide and Conquer
@@ -18,6 +18,7 @@ public class ArrayListSum {
 	 * @param list is a list of integers
 	 * @return the sum of the values in list
 	 */
+	@SuppressWarnings("unchecked")
 	public static int listSum(ArrayList<Integer> list) {
 		// create local copy of the list so that the input list does not change
 		ArrayList<Integer> localList = (ArrayList<Integer>) list.clone();

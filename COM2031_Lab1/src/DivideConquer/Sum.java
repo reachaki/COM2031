@@ -1,4 +1,4 @@
-package org.com2031.labs.dac.css1ss;
+package divideconquer;
 
 /**
  * Sum the values in an array

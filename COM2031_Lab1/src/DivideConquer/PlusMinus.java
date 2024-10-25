@@ -1,4 +1,4 @@
-package DivideConquer;
+package divideconquer;
 
 /**
  * Alternately add and subtract values in a list, using Divide and Conquer

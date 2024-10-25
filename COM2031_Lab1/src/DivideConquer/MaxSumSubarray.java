@@ -1,5 +1,4 @@
-package org.com2031.labs.dac.css1ss;
-
+package divideconquer;
 /**
  * Maximum Sum Subarray of a 1-dimensional array
  * 

@@ -1,5 +1,4 @@
-package org.com2031.labs.dac.css1ss;
-
+package divideconquer;
 /**
  * Find the maximum and minimum values in an array using Divide and Conquer
  * 

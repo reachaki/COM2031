@@ -1,4 +1,4 @@
-package DivideConquer;
+package divideconquer;
 
 /**
  * Maximum value in an array, using Divide and Conquer

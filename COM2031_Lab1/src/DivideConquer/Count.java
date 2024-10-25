@@ -1,5 +1,4 @@
-package org.com2031.labs.dac.css1ss;
-
+package divideconquer;
 /**
  * Count number of a particular value in an array, using Divide and Conquer
  * 
